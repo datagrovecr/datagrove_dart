@@ -48,14 +48,17 @@ export default class PasteHandler extends Extension {
             document.onpaste = function(pasteEvent) {
               // consider the first item (can be easily extended for multiple items)
               var item = pasteEvent.clipboardData.items[0];
+              
            
               if (item.type.indexOf("image") === 0)
               {
+                  
                   var blob = item.getAsFile();
            
                   var reader = new FileReader();
                   reader.onload = function(event) {
-                      document.getElementById("container").src = event.target.result;
+                  const img = document.getElementById("container") as HTMLImageElement | null;
+                  img.src  =event.target.result as string;
                   };
            
                   reader.readAsDataURL(blob);
