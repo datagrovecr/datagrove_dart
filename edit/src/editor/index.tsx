@@ -26,7 +26,8 @@ import Extension from "./lib/Extension";
 import ExtensionManager from "./lib/ExtensionManager";
 import ComponentView from "./lib/ComponentView";
 import headingToSlug from "./lib/headingToSlug";
-import {CodeBlockView} from "./codemirror"
+import {CodeBlockView} from "./codemirror";
+import Poll from "./components/Poll";
 
 // styles
 import { StyledEditor } from "./styles/editor";
@@ -837,6 +838,8 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
                   onShowToast={this.props.onShowToast}
                   embeds={this.props.embeds}
                 />
+
+                <Poll />
               </React.Fragment>
             )}
           </React.Fragment>

@@ -12,4 +12,5 @@ const App = () => {
 async function upload2(f: File): Promise<string> {
   return URL.createObjectURL(f)
 }
+
 export default App
