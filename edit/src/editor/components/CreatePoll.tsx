@@ -9,18 +9,22 @@ type PollState = {
 }
 
 class CreatePoll extends React.Component<PollProps, PollState> {
-    // const [count, setCount] = useState<number>(0)
+    // const [count, setCount] = React.useState<PollState>({
+    //     count: 0,
+    // });
     
-    // static defaultProps = {
-    //     pollText: "Count:"
-    // }
+    const [count, setCount] = React.useState<number>(0);
+
+    // React.useEffect(() => {
+    //     setCount(12121212121212);
+    // }, []);
 
     state: PollState = {
         count: 0,
     };
 
     increaseVoteCount() {
-        // this.state.count++;
+        setCount((this.state.count)++);
         alert(`Button has been pushed`);
     }
 
