@@ -4,44 +4,79 @@ type PollProps = {
     pollText: string;
 }
 
-type PollState = {
-    count: number;
-}
+function CreatePoll(props) {
+    const [count, setCount] = useState<number>(0);
+    const [pollQuestion, setPollQuestion] = useState<string>("");
 
-class CreatePoll extends React.Component<PollProps, PollState> {
-    // const [count, setCount] = React.useState<PollState>({
-    //     count: 0,
-    // });
-    
-    const [count, setCount] = React.useState<number>(0);
-
-    // React.useEffect(() => {
-    //     setCount(12121212121212);
-    // }, []);
-
-    state: PollState = {
-        count: 0,
-    };
-
-    increaseVoteCount() {
-        setCount((this.state.count)++);
-        alert(`Button has been pushed`);
+    function handleInputChange(e) {
+        const target = e.target;
+        const name = target.value;
+        setPollQuestion(name);
     }
 
-    render() {
-        const { pollText } = this.props;
-        const { count } = this.state;
+    return (
+    <div>
+        <h1>{ pollQuestion }</h1>
+
+        <label>Poll Question: 
+            <input type="text" name="pollQuestion" onChange={ handleInputChange }></input>
+        </label>
+       
+       <br></br>
+
+        <button onClick={() => setCount(count => count + 1)}>Votes: { count }</button>
+
+    </div>
+    )
+}
+
+// ReactDOM.render(
+//     <CreatePoll count={ 0 } />,
+//     document.getElementById('root')
+// );
+
+// type PollProps = {
+//     pollText: string;
+// }
+
+// type PollState = {
+//     count: number;
+// }
+
+// class CreatePoll extends React.Component<PollProps, PollState> {
+//     // const [count, setCount] = React.useState<PollState>({
+//     //     count: 0,
+//     // });
+    
+//     const [count, setCount] = React.useState<number>(0);
+
+//     // React.useEffect(() => {
+//     //     setCount(12121212121212);
+//     // }, []);
+
+//     state: PollState = {
+//         count: 0,
+//     };
+
+//     increaseVoteCount() {
+//         setCount((this.state.count)++);
+//         alert(`Button has been pushed`);
+//     }
+
+//     render() {
+//         const { pollText } = this.props;
+//         const { count } = this.state;
         
-        return (
-            <div>
-                <p>{ pollText} { count }</p>
+//         return (
+//             <div>
+//                 <p>{ pollText} { count }</p>
 
-                <button onClick={ this.increaseVoteCount }>Vote</button>
+//                 <button onClick={ this.increaseVoteCount }>Vote</button>
 
-            </div>
+//             </div>
 
-        );
-    };
-};
+//         );
+//     };
+// };
 
 export default CreatePoll;
