@@ -7,25 +7,80 @@ type PollProps = {
 function CreatePoll(props) {
     const [count, setCount] = useState<number>(0);
     const [pollQuestion, setPollQuestion] = useState<string>("");
+    const [formVisibility, setFormVisibility] = useState<boolean>(false);
+    const [hoverText, setHoverText] = useState<boolean>(false);
+    const [responseOptions, setResponseOptions] = useState<string[]>([]);
 
     function handleInputChange(e) {
-        const target = e.target;
-        const name = target.value;
+        const name = e.target.value;
         setPollQuestion(name);
+    }
+
+    function handleSubmitResponse(e) {
+        const response = e.target.value;
+        setResponseOptions(prevResponses => [...prevResponses, response]);
+    }
+
+    function changeFormVisibility() {
+        setFormVisibility(!formVisibility);
+    }
+
+    function handleSubmitQuestion(e) {
+        
+        alert(pollQuestion);
     }
 
     return (
     <div>
-        <h1>{ pollQuestion }</h1>
+        
+        <div>
+            <button className="create-poll-btn p-0" onMouseOver={ () => setHoverText(true) } onMouseOut={ () => setHoverText(false)} onClick={ changeFormVisibility }>
+                <img src="../../../plus.png" /> { hoverText && <p className="p-0">Create Poll</p> }
 
-        <label>Poll Question: 
-            <input type="text" name="pollQuestion" onChange={ handleInputChange }></input>
-        </label>
-       
-       <br></br>
+            </button>
+        </div>
+        
+        <div className="create-poll-form-div">
+            { formVisibility == true && 
+            
+            <div>
 
-        <button onClick={() => setCount(count => count + 1)}>Votes: { count }</button>
+                <label>Poll Question: 
+                    <input type="text" name="pollQuestion" onChange={ handleInputChange }></input>
+                </label>
 
+                <br></br>
+
+                <button onClick={ handleSubmitQuestion }>Submit Poll Question</button>
+            
+                <br></br>
+
+                <label>Response: 
+                    <input type="text" name="pollResponse"></input>
+                </label>
+
+                <br></br>                
+                <button onClick={ handleSubmitResponse }>Submit Response</button>
+
+                <div>
+                    <button onClick={ handleSubmitResponse }>
+                        Add Response Option
+                    </button>
+                    { responseOptions.map((e, i) => {
+                            return (
+                                <div key={ i }>
+                                    <h2>{ e }</h2>
+                                </div>
+                            )
+                        })}
+                </div>
+                <br></br>
+
+                <button onClick={() => setCount(count => count + 1)}>Votes: { count }</button>
+            </div>
+
+            }
+        </div>
     </div>
     )
 }
