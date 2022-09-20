@@ -7,8 +7,10 @@ type PollProps = {
 function CreatePoll(props) {
     const [count, setCount] = useState<number>(0);
     const [pollQuestion, setPollQuestion] = useState<string>("");
+    const [pollQuestionVisibility, setPollQuestionVisibility] = useState<boolean>(false);
     const [formVisibility, setFormVisibility] = useState<boolean>(false);
     const [hoverText, setHoverText] = useState<boolean>(false);
+    const [response, setResponse] = useState<string>("");
     const [responseOptions, setResponseOptions] = useState<string[]>([]);
 
     function handleInputChange(e) {
@@ -16,8 +18,12 @@ function CreatePoll(props) {
         setPollQuestion(name);
     }
 
-    function handleSubmitResponse(e) {
+    function handleUpdateResponse(e) {
         const response = e.target.value;
+        setResponse(response);
+    }
+
+    function handleSubmitResponse() {
         setResponseOptions(prevResponses => [...prevResponses, response]);
     }
 
@@ -25,58 +31,68 @@ function CreatePoll(props) {
         setFormVisibility(!formVisibility);
     }
 
-    function handleSubmitQuestion(e) {
-        
-        alert(pollQuestion);
+    function handleSubmitQuestion() {
+        setPollQuestionVisibility(true);
     }
 
     return (
     <div>
         
         <div>
-            <button className="create-poll-btn p-0" onMouseOver={ () => setHoverText(true) } onMouseOut={ () => setHoverText(false)} onClick={ changeFormVisibility }>
+            <button className="create-poll-btn p-0 ml-5" onMouseOver={ () => setHoverText(true) } onMouseOut={ () => setHoverText(false)} onClick={ changeFormVisibility }>
                 <img src="../../../plus.png" /> { hoverText && <p className="p-0">Create Poll</p> }
 
             </button>
         </div>
         
-        <div className="create-poll-form-div">
+        <div className="create-poll-form-div ml-5">
             { formVisibility == true && 
             
-            <div>
+            <div className="visible-poll-div flex">
+                <div className="build-poll-div basis-1/3">
+                    <div className="mb-10">
+                        <label>Poll Question: 
+                            <input className="ml-2" type="text" name="pollQuestion" onChange={ handleInputChange }></input>
+                        </label>
 
-                <label>Poll Question: 
-                    <input type="text" name="pollQuestion" onChange={ handleInputChange }></input>
-                </label>
+                        <br></br>
 
-                <br></br>
+                        <button onClick={ handleSubmitQuestion }>Submit Poll Question</button>
+                    </div>
 
-                <button onClick={ handleSubmitQuestion }>Submit Poll Question</button>
-            
-                <br></br>
+                    <div className="mt-10">
+                        <label>Response: 
+                            <input className="ml-2" type="text" name="pollResponse" onChange={ handleUpdateResponse}></input>
+                        </label>
 
-                <label>Response: 
-                    <input type="text" name="pollResponse"></input>
-                </label>
+                        <br></br>                
 
-                <br></br>                
-                <button onClick={ handleSubmitResponse }>Submit Response</button>
+                        <button className="" onClick={ handleSubmitResponse }>
+                            Add Response Option
+                        </button>
+                    </div>
+                </div>
+                    
+                <div className="poll-display-div p-0">
+                    <div>
+                    { pollQuestionVisibility && 
+                        <h1>{ pollQuestion }</h1>
+                    }
+                    </div>
 
-                <div>
-                    <button onClick={ handleSubmitResponse }>
-                        Add Response Option
-                    </button>
                     { responseOptions.map((e, i) => {
                             return (
                                 <div key={ i }>
-                                    <h2>{ e }</h2>
+                                    <h2 className="py-0">{ i + 1 }: { e }</h2>
                                 </div>
                             )
                         })}
+
                 </div>
+
                 <br></br>
 
-                <button onClick={() => setCount(count => count + 1)}>Votes: { count }</button>
+                {/* <button onClick={() => setCount(count => count + 1)}>Votes: { count }</button> */}
             </div>
 
             }
