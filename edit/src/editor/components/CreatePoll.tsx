@@ -57,7 +57,7 @@ function CreatePoll(props) {
 
                         <br></br>
 
-                        <button onClick={ handleSubmitQuestion }>Submit Poll Question</button>
+                        <button onClick={ handleSubmitQuestion }>Add Poll Question</button>
                     </div>
 
                     <div className="mt-10">
