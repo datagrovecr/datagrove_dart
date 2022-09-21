@@ -841,7 +841,7 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
                 />
 
                 <CreatePoll />
-                <DisplayPoll />
+                {/* <DisplayPoll /> */}
               </React.Fragment>
             )}
           </React.Fragment>

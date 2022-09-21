@@ -13,11 +13,12 @@ function CreatePoll(props) {
     const [hoverText, setHoverText] = useState<boolean>(false);
     const [response, setResponse] = useState<string>("");
     const [responseOptions, setResponseOptions] = useState<string[]>([]);
+    const [voteReady, setVoteReady] = useState<boolean>(false);
 
-    // const pollProps = {
-    //     question: pollQuestion,
-    //     responses: responseOptions
-    // }
+    const pollProps = {
+        question: pollQuestion,
+        responses: responseOptions
+    }
 
     function handleInputChange(e) {
         const name = e.target.value;
@@ -43,8 +44,9 @@ function CreatePoll(props) {
 
     return (
     <div>
-        
-        <DisplayPoll testData={ pollQuestion }/>
+        { voteReady && 
+            <DisplayPoll testData={ pollProps }/>
+        }
 
         <div>
             <button className="create-poll-btn p-0 ml-5" onMouseOver={ () => setHoverText(true) } onMouseOut={ () => setHoverText(false)} onClick={ changeFormVisibility }>
@@ -53,10 +55,10 @@ function CreatePoll(props) {
             </button>
         </div>
         
-        <div className="create-poll-form-div ml-5">
-            { formVisibility == true && 
+        <div className="create-poll-form-div ml-5 flex">
+            { formVisibility == true && voteReady == false &&
             
-            <div className="visible-poll-div flex">
+            <div className="visible-poll-div">
                 <div className="build-poll-div basis-1/3">
                     <div className="mb-10">
                         <label>Poll Question: 
@@ -68,7 +70,7 @@ function CreatePoll(props) {
                         <button onClick={ handleSubmitQuestion }>Add Poll Question</button>
                     </div>
 
-                    <div className="mt-10">
+                    <div className="my-10">
                         <label>Response: 
                             <input className="ml-2" type="text" name="pollResponse" onChange={ handleUpdateResponse}></input>
                         </label>
@@ -81,7 +83,7 @@ function CreatePoll(props) {
                     </div>
                 </div>
                     
-                <div className="poll-display-div p-0">
+                <div className="poll-display-div p-0 my-10">
                     <div>
                     { pollQuestionVisibility && 
                         <h1>{ pollQuestion }</h1>
@@ -98,10 +100,10 @@ function CreatePoll(props) {
 
                 </div>
 
-                <br></br>
-
-                {/* <button onClick={() => setCount(count => count + 1)}>Votes: { count }</button> */}
-            </div>
+                <div>
+                    <button onClick={() => setVoteReady(bool => true)}>Finish Poll</button>
+                </div>
+            </div>          
 
             }
         </div>
