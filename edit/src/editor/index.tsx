@@ -26,7 +26,7 @@ import Extension from "./lib/Extension";
 import ExtensionManager from "./lib/ExtensionManager";
 import ComponentView from "./lib/ComponentView";
 import headingToSlug from "./lib/headingToSlug";
-import {CodeBlockView} from "./codemirror"
+import {CodeBlockView, useCodeMirror} from "./codemirror"
 
 // styles
 import { StyledEditor } from "./styles/editor";
@@ -57,8 +57,8 @@ import TableHeadCell from "./nodes/TableHeadCell";
 import TableRow from "./nodes/TableRow";
 
 //By raquel
-import { lineNumbers } from "@codemirror/view";
-import {gutter} from "@codemirror/view";
+  //import { lineNumbers } from "@codemirror/view";
+  //import {gutter} from "@codemirror/view";
 
 //import Mathblock from "./nodes/Mathblock"
 // marks
@@ -85,6 +85,7 @@ import PasteHandler from "./plugins/PasteHandler";
 import { PluginSimple } from "markdown-it";
 import { store } from "../store";
 import { javascript } from "@codemirror/lang-javascript";
+import { isFieldOrDatumDefForTimeFormat } from "vega-lite/build/src/channeldef";
 export { schema, parser, serializer, renderToHtml } from "./server";
 
 export { default as Extension } from "./lib/Extension";
@@ -92,6 +93,8 @@ export { default as Extension } from "./lib/Extension";
 export const theme = lightTheme;
 
 export const extentionsByRaquel = [
+
+  
 
   //EditorView.theme(spec: {}, options: {dark: true}),
   //highlightStyle,
