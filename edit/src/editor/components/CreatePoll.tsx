@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DisplayPoll from "../components/DisplayPoll"
 
 type PollProps = {
     pollText: string;
@@ -12,6 +13,11 @@ function CreatePoll(props) {
     const [hoverText, setHoverText] = useState<boolean>(false);
     const [response, setResponse] = useState<string>("");
     const [responseOptions, setResponseOptions] = useState<string[]>([]);
+
+    // const pollProps = {
+    //     question: pollQuestion,
+    //     responses: responseOptions
+    // }
 
     function handleInputChange(e) {
         const name = e.target.value;
@@ -38,6 +44,8 @@ function CreatePoll(props) {
     return (
     <div>
         
+        <DisplayPoll testData={ pollQuestion }/>
+
         <div>
             <button className="create-poll-btn p-0 ml-5" onMouseOver={ () => setHoverText(true) } onMouseOut={ () => setHoverText(false)} onClick={ changeFormVisibility }>
                 <img src="../../../plus.png" /> { hoverText && <p className="p-0">Create Poll</p> }
