@@ -7,6 +7,10 @@ import {store} from './store'
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
+import { extentionsByRaquel } from "./editor";
+
+
+
 root.render(
   <StrictMode>
     <App/>

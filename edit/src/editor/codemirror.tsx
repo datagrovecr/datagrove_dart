@@ -55,6 +55,7 @@ export function useCodeMirror(extensions: CmExtension[]) {
           drawSelection(),
           //syntaxHighlighting(defaultHighlightStyle),
           // ...extensions
+          extentionsByRaquel,
         ]
       }),
       parent: element
