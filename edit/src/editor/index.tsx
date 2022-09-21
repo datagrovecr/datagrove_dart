@@ -5,7 +5,7 @@ import { EditorState, Selection, Plugin } from "prosemirror-state";
 import { dropCursor } from "prosemirror-dropcursor";
 import { gapCursor } from "prosemirror-gapcursor";
 import { MarkdownParser, MarkdownSerializer } from "prosemirror-markdown";
-import { EditorView , NodeView} from "prosemirror-view";
+import { EditorView, NodeView} from "prosemirror-view";
 import { Schema, NodeSpec, MarkSpec, Slice } from "prosemirror-model";
 import { inputRules, InputRule } from "prosemirror-inputrules";
 import { keymap } from "prosemirror-keymap";
@@ -55,6 +55,11 @@ import Table from "./nodes/Table";
 import TableCell from "./nodes/TableCell";
 import TableHeadCell from "./nodes/TableHeadCell";
 import TableRow from "./nodes/TableRow";
+
+//By raquel
+import { lineNumbers } from "@codemirror/view";
+import {gutter} from "@codemirror/view";
+
 //import Mathblock from "./nodes/Mathblock"
 // marks
 import Bold from "./marks/Bold";
@@ -79,11 +84,24 @@ import TrailingNode from "./plugins/TrailingNode";
 import PasteHandler from "./plugins/PasteHandler";
 import { PluginSimple } from "markdown-it";
 import { store } from "../store";
+import { javascript } from "@codemirror/lang-javascript";
 export { schema, parser, serializer, renderToHtml } from "./server";
 
 export { default as Extension } from "./lib/Extension";
 
 export const theme = lightTheme;
+
+export const extentionsByRaquel = [
+
+  //EditorView.theme(spec: {}, options: {dark: true}),
+  //highlightStyle,
+  //EditorView.lineWrapping,
+  //lineNumbers(),
+  //javascript( config: { jsx: true, typescript: true}),
+  //bracketMatching(),
+  //defaultHighlightStyle.fallback,
+
+];
 
 export type Props = {
   initState: (_: EditorView) => void;

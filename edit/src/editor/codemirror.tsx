@@ -11,7 +11,10 @@ import {EditorView} from "prosemirror-view"
 import {DOMParser,Node as ProsemirrorNode} from "prosemirror-model"
 import {keymap} from "prosemirror-keymap"
 import { getSchema } from "./server"
+import { bracketMatching } from "@codemirror/language";
 
+
+export const extentionsByRaquel = [bracketMatching(), javascript(),];
 
 
 import { Extension as CmExtension, EditorState as CmEditorState } from "@codemirror/state";
@@ -69,10 +72,10 @@ type CodeMirrorProps = {
   
   export const CodeEditor = ({ extensions }: CodeMirrorProps) => {
     const { ref } = useCodeMirror(extensions);
-  
+    
     return <div ref={ref} />;
   };
-  
+
   export class CodeBlockView { 
     cm: CmEditorView
     updating: boolean
