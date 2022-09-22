@@ -93,9 +93,6 @@ export { default as Extension } from "./lib/Extension";
 export const theme = lightTheme;
 
 export const extentionsByRaquel = [
-
-  
-
   //EditorView.theme(spec: {}, options: {dark: true}),
   //highlightStyle,
   //EditorView.lineWrapping,

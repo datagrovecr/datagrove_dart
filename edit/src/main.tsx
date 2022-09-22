@@ -10,6 +10,15 @@ const root = createRoot(rootElement);
 import { extentionsByRaquel } from "./editor";
 
 
+import {oneDark} from "./theme/one-dark";
+import { javascript } from "@codemirror/lang-javascript";
+import { EditorView, basicSetup } from "@codemirror/basic-setup";
+
+extentions: [
+  basicSetup,
+  oneDark,
+  javascript
+]
 
 root.render(
   <StrictMode>
