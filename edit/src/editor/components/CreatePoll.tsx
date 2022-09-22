@@ -43,7 +43,8 @@ function CreatePoll(props) {
     }
 
     return (
-    <div>
+    <div className="bg-yellow-100">
+
         { voteReady && 
             <DisplayPoll testData={ pollProps }/>
         }
