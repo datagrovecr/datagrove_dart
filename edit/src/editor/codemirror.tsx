@@ -14,7 +14,7 @@ import { getSchema } from "./server"
 import { bracketMatching } from "@codemirror/language";
 
 
-export const extentionsByRaquel = [bracketMatching(), javascript(),];
+//export const extentionsByRaquel = [bracketMatching(), javascript(),];
 
 
 import { Extension as CmExtension, EditorState as CmEditorState } from "@codemirror/state";
@@ -55,7 +55,7 @@ export function useCodeMirror(extensions: CmExtension[]) {
           drawSelection(),
           //syntaxHighlighting(defaultHighlightStyle),
           // ...extensions
-          extentionsByRaquel,
+          //extentionsByRaquel,
         ]
       }),
       parent: element

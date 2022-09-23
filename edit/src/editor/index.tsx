@@ -92,17 +92,6 @@ export { default as Extension } from "./lib/Extension";
 
 export const theme = lightTheme;
 
-export const extentionsByRaquel = [
-  //EditorView.theme(spec: {}, options: {dark: true}),
-  //highlightStyle,
-  //EditorView.lineWrapping,
-  //lineNumbers(),
-  //javascript( config: { jsx: true, typescript: true}),
-  //bracketMatching(),
-  //defaultHighlightStyle.fallback,
-
-];
-
 export type Props = {
   initState: (_: EditorView) => void;
   dispose: () => void;

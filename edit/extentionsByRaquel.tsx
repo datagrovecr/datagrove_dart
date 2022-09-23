@@ -1,4 +1,4 @@
-// I have to delet this file
+/* I have to delet this file
 import {javascript} from "@codemirror/lang-javascript";
 import {EditorView} from "@codemirror/view";
 import {defaultHighlightStyle} from "@codemirror/highlight";
@@ -13,4 +13,4 @@ export const extentionsByRaquel = [
     lineNumbers(),
     bracketMatching(),
     defaultHighlightStyle.fallback,
-];
+];*/

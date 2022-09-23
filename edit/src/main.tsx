@@ -1,27 +1,20 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
-import 'katex/dist/katex.css'
-import {store} from './store'
-const rootElement = document.getElementById("root");
-const root = createRoot(rootElement);
 
-import { extentionsByRaquel } from "./editor";
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+   <React.StrictMode>
+     <App />
+   </React.StrictMode>
+ )
+import { EditorView, basicSetup } from "codemirror"
+import { javascript } from "@codemirror/lang-javascript"
+import { oneDark } from "./theme/one-dark"
 
-
-import {oneDark} from "./theme/one-dark";
-import { javascript } from "@codemirror/lang-javascript";
-import { EditorView, basicSetup } from "@codemirror/basic-setup";
-
-extentions: [
-  basicSetup,
-  oneDark,
-  javascript
-]
-
-root.render(
-  <StrictMode>
-    <App/>
-  </StrictMode>
-);
+let editor = new EditorView({
+  extensions: [basicSetup, 
+    oneDark,
+    javascript()],
+  parent: document.body
+})

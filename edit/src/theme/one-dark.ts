@@ -42,7 +42,7 @@ export const color = {
   cursor
 }
 
-/// The editor theme styles for One Dark.
+// The editor theme styles for One Dark.
 export const oneDarkTheme = EditorView.theme({
   "&": {
     color: ivory,
@@ -77,7 +77,7 @@ export const oneDarkTheme = EditorView.theme({
   },
 
   ".cm-gutters": {
-    backgroundColor: background,
+    backgroundColor: violet,
     color: stone,
     border: "none"
   },
