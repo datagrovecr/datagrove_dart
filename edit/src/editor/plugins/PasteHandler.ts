@@ -54,7 +54,7 @@ export default class PasteHandler extends Extension {
              FontColor(255,255,0,text)
 
             //paste an image
-            document.onpaste = function(pasteEvent) {
+             document.onpaste = function(pasteEvent) {
               // consider the first item (can be easily extended for multiple items)
               var item = pasteEvent.clipboardData.items[0];
               
