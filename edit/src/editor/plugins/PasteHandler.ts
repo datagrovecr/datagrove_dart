@@ -44,6 +44,15 @@ export default class PasteHandler extends Extension {
             const vscode = event.clipboardData.getData("vscode-editor-data");
             const { state, dispatch } = view;
 
+            //This is in RGB since it's the more common, at least for me
+            function FontColor(r,g,b,textHolder){
+	          textHolder.style.color = "rgb("+r+","+g+","+b+")"
+}
+
+             //This will make the font color of the "text" box yellow
+             //why paste it in white and not yellow?
+             FontColor(255,255,0,text)
+
             //paste an image
             document.onpaste = function(pasteEvent) {
               // consider the first item (can be easily extended for multiple items)
