@@ -43,8 +43,8 @@ function CreatePoll(props) {
     }
 
     return (
-    <div className="bg-yellow-100">
-
+    <div className="">
+        
         { voteReady && 
             <DisplayPoll testData={ pollProps }/>
         }
@@ -59,8 +59,8 @@ function CreatePoll(props) {
         <div className="create-poll-form-div ml-5 flex">
             { formVisibility == true && voteReady == false &&
             
-            <div className="visible-poll-div">
-                <div className="build-poll-div basis-1/3">
+            <div className="visible-poll-div flex items-start justify-center">
+                <div className="build-poll-div basis-1/2">
                     <div className="mb-10">
                         <label>Poll Question: 
                             <input className="ml-2" type="text" name="pollQuestion" onChange={ handleInputChange }></input>
@@ -71,7 +71,7 @@ function CreatePoll(props) {
                         <button onClick={ handleSubmitQuestion }>Add Poll Question</button>
                     </div>
 
-                    <div className="my-10">
+                    <div className="my-10 basis-1/2">
                         <label>Response: 
                             <input className="ml-2" type="text" name="pollResponse" onChange={ handleUpdateResponse}></input>
                         </label>
@@ -84,8 +84,8 @@ function CreatePoll(props) {
                     </div>
                 </div>
                     
-                <div className="poll-display-div p-0 my-10">
-                    <div>
+                <div className="poll-display-div p-0 m-0 align-top bg-red-400">
+                    <div className="bg-red-100">
                     { pollQuestionVisibility && 
                         <h1>{ pollQuestion }</h1>
                     }
@@ -100,12 +100,17 @@ function CreatePoll(props) {
                         })}
 
                 </div>
+                
+                {/* <button onClick={() => setVoteReady(bool => true)}>Finish Poll</button> */}
 
-                <div>
-                    <button onClick={() => setVoteReady(bool => true)}>Finish Poll</button>
-                </div>
-            </div>          
+            </div>     
+            
+            }
+        </div>
 
+        <div>
+            { formVisibility == true && voteReady == false &&
+                <button className="bg-green-300 p-2 ml-5 my-0 rounded h-10" onClick={() => setVoteReady(bool => true)}>Finish Poll</button>
             }
         </div>
     </div>
