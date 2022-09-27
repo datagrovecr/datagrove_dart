@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import DisplayPoll from "../components/DisplayPoll"
+import DisplayPoll from "../components/DisplayPoll";
+import Counter from "../components/Counter";
 
 type PollProps = {
     pollText: string;
@@ -17,7 +18,8 @@ function CreatePoll(props) {
 
     const pollProps = {
         question: pollQuestion,
-        responses: responseOptions
+        responses: responseOptions,
+        votes: 0
     }
 
     function handleInputChange(e) {
@@ -43,10 +45,41 @@ function CreatePoll(props) {
     }
 
     return (
-    <div className="">
+    <div className="bg-yellow-100">
         
         { voteReady && 
-            <DisplayPoll testData={ pollProps }/>
+            <div>
+                {/* <DisplayPoll testData={ pollProps }/> */}
+                
+                <div>
+                    <h1>{ pollProps.question }</h1>
+                </div>
+
+                <div>
+                    { pollProps.responses.map((response, index) => {
+                        return (
+                            <div key={ index }>
+                                <Counter response={ response }/>
+                            </div>
+                        )
+                    })}
+
+                    {/* { pollProps.responses.map(
+                        counter => <Counter key={ counter.id } id={ counter.id } />
+                    )} */}
+
+                    {/* { pollProps.responses.map(response) => {
+                        return (
+                            <Counter 
+                                key={ i } 
+                            /> 
+                        );
+                    })}; */}
+
+                </div>
+                
+                {/* <Counter counterProps={ pollProps } /> */}
+            </div>
         }
 
         <div>

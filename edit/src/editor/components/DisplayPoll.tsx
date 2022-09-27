@@ -7,10 +7,41 @@ function DisplayPoll({ testData }) {
     const [res4, setRes4]=useState<number>(0);
     const [res5, setRes5]=useState<number>(0);
 
-    function increaseVote(resNum) {
-        let voteChoice = `res${ resNum }`;
+    let [buttons, setButtons]=useState([]);
+
+    function increaseVoteTest4( e, key ) {
+        // console.log("testData:", testData.votes);
         
-        switch(voteChoice) {
+        let res = testData.votes++;
+
+        setRes1(res);
+
+        console.log("res1:", res1);
+
+        // console.groupCollapsed("votes:", testData.votes);
+    }
+    
+    function increaseVoteTest3(key) {
+        buttons = buttons.map((button) => {
+            if (button.id === key) {
+                button.votes = button.votes+1;
+            }
+            return button;
+        });
+        setButtons(buttons);
+    }
+    
+    function increaseVoteTest2(e, key) {
+        console.log(e.target, key);
+
+
+    }
+    
+    function increaseVote(e, key, stateName) {
+        // let id=e.target.id; 
+        console.log("stateName: ", stateName);
+        
+        switch(stateName) {
             case "res1":
                 let vote1 = res1;
                 vote1++;
@@ -37,6 +68,9 @@ function DisplayPoll({ testData }) {
                 setRes5(vote5);
                 break;
         }
+
+        console.log("res1:", res1);
+        console.log("res2: ", res2);
     }
 
     return(
@@ -45,22 +79,23 @@ function DisplayPoll({ testData }) {
             
             { testData.responses.map((e, i) => {
                 let key = i + 1;
-                let currRes = 1;
+
+                let stateName = `res${ key }`;
                 
                 return (
                     <div key={ key } className="flex flex-row items-center my-5">
                         <div className="">
-                            <button className="bg-green-300 p-0 m-0 rounded h-10 w-12" onClick={ increaseVote }>vote</button>
+                            <button className="bg-green-300 p-0 m-0 rounded h-10 w-12" onClick={ (e) => increaseVote(e, key, stateName) }>vote</button>
                         </div>
                         <div className="pl-5 items-center justify-center">
                             <h2 className="p-0 m-0">{ key }. { e }</h2>
                         </div>
                         <div className="pl-5 m-0 items-center justify-center">
-                            <h2 className="p-0 m-0">Total Votes: { currRes }</h2>
+                            <h2 className="p-0 m-0">Total Votes: {  }</h2>
                         </div>
 
 
-                        { currRes++ };
+                        {/* { currRes++ }; */}
                     </div>
 
                 )
