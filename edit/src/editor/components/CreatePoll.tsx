@@ -1,12 +1,8 @@
 import React, { useState } from "react";
-import DisplayPoll from "../components/DisplayPoll";
+// import DisplayPoll from "../components/DisplayPoll";
 import Counter from "../components/Counter";
 
-type PollProps = {
-    pollText: string;
-}
-
-function CreatePoll(props) {
+function CreatePoll() {
     const [count, setCount] = useState<number>(0);
     const [pollQuestion, setPollQuestion] = useState<string>("");
     const [pollQuestionVisibility, setPollQuestionVisibility] = useState<boolean>(false);
@@ -15,6 +11,8 @@ function CreatePoll(props) {
     const [response, setResponse] = useState<string>("");
     const [responseOptions, setResponseOptions] = useState<string[]>([]);
     const [voteReady, setVoteReady] = useState<boolean>(false);
+    const [questionInput, setQuestionInput] = useState<string>("");
+    const [responseInput, setResponseInput] = useState<string>("");
 
     const pollProps = {
         question: pollQuestion,
@@ -25,15 +23,18 @@ function CreatePoll(props) {
     function handleInputChange(e) {
         const name = e.target.value;
         setPollQuestion(name);
+        setQuestionInput(name);
     }
 
     function handleUpdateResponse(e) {
         const response = e.target.value;
         setResponse(response);
+        setResponseInput(response);
     }
 
     function handleSubmitResponse() {
         setResponseOptions(prevResponses => [...prevResponses, response]);
+        setResponseInput("");
     }
 
     function changeFormVisibility() {
@@ -42,17 +43,18 @@ function CreatePoll(props) {
 
     function handleSubmitQuestion() {
         setPollQuestionVisibility(true);
+        setQuestionInput("");
     }
 
     return (
     <div className="bg-yellow-100">
         
         { voteReady && 
-            <div>
+            <div className="m-1 p-1">
                 {/* <DisplayPoll testData={ pollProps }/> */}
                 
                 <div>
-                    <h1>{ pollProps.question }</h1>
+                    <h1 className="m-0 p-0">{ pollProps.question }</h1>
                 </div>
 
                 <div>
@@ -63,22 +65,8 @@ function CreatePoll(props) {
                             </div>
                         )
                     })}
-
-                    {/* { pollProps.responses.map(
-                        counter => <Counter key={ counter.id } id={ counter.id } />
-                    )} */}
-
-                    {/* { pollProps.responses.map(response) => {
-                        return (
-                            <Counter 
-                                key={ i } 
-                            /> 
-                        );
-                    })}; */}
-
                 </div>
-                
-                {/* <Counter counterProps={ pollProps } /> */}
+
             </div>
         }
 
@@ -96,7 +84,11 @@ function CreatePoll(props) {
                 <div className="build-poll-div basis-1/2">
                     <div className="mb-10">
                         <label>Poll Question: 
-                            <input className="ml-2" type="text" name="pollQuestion" onChange={ handleInputChange }></input>
+                            <input className="ml-2" 
+                                type="text" 
+                                value={ questionInput }
+                                name="pollQuestion" 
+                                onChange={ handleInputChange }></input>
                         </label>
 
                         <br></br>
@@ -106,7 +98,11 @@ function CreatePoll(props) {
 
                     <div className="my-10 basis-1/2">
                         <label>Response: 
-                            <input className="ml-2" type="text" name="pollResponse" onChange={ handleUpdateResponse}></input>
+                            <input className="ml-2" 
+                                type="text" 
+                                value={ responseInput }
+                                name="pollResponse" 
+                                onChange={ handleUpdateResponse}></input>
                         </label>
 
                         <br></br>                
@@ -133,8 +129,6 @@ function CreatePoll(props) {
                         })}
 
                 </div>
-                
-                {/* <button onClick={() => setVoteReady(bool => true)}>Finish Poll</button> */}
 
             </div>     
             
