@@ -13,6 +13,8 @@ function CreatePoll() {
     const [voteReady, setVoteReady] = useState<boolean>(false);
     const [questionInput, setQuestionInput] = useState<string>("");
     const [responseInput, setResponseInput] = useState<string>("");
+    const [disableQuestion, setDisableQuestion] = useState<boolean>(false);
+    const [disableResponse, setDisableResponse] = useState<boolean>(false);
 
     const pollProps = {
         question: pollQuestion,
@@ -41,9 +43,16 @@ function CreatePoll() {
         setFormVisibility(!formVisibility);
     }
 
-    function handleSubmitQuestion() {
+    function handleSubmitQuestion(e) {
         setPollQuestionVisibility(true);
         setQuestionInput("");
+        e.currentTarget.disabled = true;
+        setDisableQuestion(true);
+    }
+    
+    function submitPoll() {
+        setVoteReady(true);
+        setDisableResponse(true);
     }
 
     return (
@@ -88,7 +97,9 @@ function CreatePoll() {
                                 type="text" 
                                 value={ questionInput }
                                 name="pollQuestion" 
-                                onChange={ handleInputChange }></input>
+                                onChange={ handleInputChange }
+                                disabled={ disableQuestion }>
+                            </input>
                         </label>
 
                         <br></br>
@@ -137,7 +148,7 @@ function CreatePoll() {
 
         <div>
             { formVisibility == true && voteReady == false &&
-                <button className="bg-green-300 p-2 ml-5 my-0 rounded h-10" onClick={() => setVoteReady(bool => true)}>Finish Poll</button>
+                <button className="bg-green-300 p-2 ml-5 my-0 rounded h-10" onClick={ submitPoll }>Finish Poll</button>
             }
         </div>
     </div>
