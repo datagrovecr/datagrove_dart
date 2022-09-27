@@ -41,6 +41,7 @@ function CreatePoll() {
 
     function changeFormVisibility() {
         setFormVisibility(!formVisibility);
+
     }
 
     function handleSubmitQuestion(e) {
@@ -80,8 +81,20 @@ function CreatePoll() {
         }
 
         <div>
-            <button className="create-poll-btn p-0 ml-5" onMouseOver={ () => setHoverText(true) } onMouseOut={ () => setHoverText(false)} onClick={ changeFormVisibility }>
-                <img src="../../../plus.png" /> { hoverText && <p className="p-0">Create Poll</p> }
+            <button className="create-poll-btn p-0 ml-5" 
+                onMouseOver={ () => setHoverText(true) } 
+                onMouseOut={ () => setHoverText(false)} 
+                onClick={ changeFormVisibility }
+                hidden={ formVisibility }>
+                
+                <img 
+                    src="../../../plus.png" 
+                    // hidden={ formVisibility }
+                /> 
+                
+                { hoverText && 
+                    <p className="p-0">Create Poll</p> 
+                }
 
             </button>
         </div>
@@ -124,8 +137,8 @@ function CreatePoll() {
                     </div>
                 </div>
                     
-                <div className="poll-display-div p-0 m-0 align-top bg-red-400">
-                    <div className="bg-red-100">
+                <div className="poll-display-div p-0 m-0 align-top">
+                    <div className="">
                     { pollQuestionVisibility && 
                         <h1>{ pollQuestion }</h1>
                     }
