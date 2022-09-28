@@ -73,6 +73,20 @@ export default class PasteHandler extends Extension {
                   reader.readAsDataURL(blob);
               }
           }
+            // resize image with the mouse
+            //var isDragging = false,
+           // $img = $('#myImg');
+
+            //$img.bind('mousedown', function(e){
+            //isDragging = true;
+           // e.preventDefault();
+           // });
+           // $('body').bind('mousemove', function(e){
+           // if(isDragging)
+           // $img.css({ left: e.pageX, top: e.pageY });
+            //}).bind('mouseup', function(){
+           //  isDragging = false;
+           // });
 
             // first check if the clipboard contents can be parsed as a single
             // url, this is mainly for allowing pasted urls to become embeds
