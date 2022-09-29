@@ -41,7 +41,6 @@ function CreatePoll() {
 
     function changeFormVisibility() {
         setFormVisibility(!formVisibility);
-
     }
 
     function handleSubmitQuestion(e) {
@@ -80,20 +79,20 @@ function CreatePoll() {
             </div>
         }
 
-        <div>
-            <button className="create-poll-btn p-0 ml-5" 
+        <div className="m-0 p-2" hidden={ formVisibility }>
+            <button className="create-poll-btn p-0 ml-5 flex flex-row items-start justify-start" 
                 onMouseOver={ () => setHoverText(true) } 
                 onMouseOut={ () => setHoverText(false)} 
-                onClick={ changeFormVisibility }
-                hidden={ formVisibility }>
+                onClick={ changeFormVisibility }>
+                {/* title="Create Poll" */}
                 
-                <img 
+                <img className="m-0 p-0"
                     src="../../../plus.png" 
                     // hidden={ formVisibility }
                 /> 
                 
                 { hoverText && 
-                    <p className="p-0">Create Poll</p> 
+                    <p className="p-0 mx-2 my-0 italic">Create Poll</p> 
                 }
 
             </button>
