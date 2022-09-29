@@ -33,5 +33,7 @@
     </scenes>
     <resources>
         <image name="LaunchImage" width="168" height="185"/>
+        <button type="button" onclick="zoomin()"><img src="/examples/images/zoom-in.png"> Zoom In</button>
+        <button type="button" onclick="zoomout()"><img src="/examples/images/zoom-out.png"> Zoom Out</button>
     </resources>
 </document>
