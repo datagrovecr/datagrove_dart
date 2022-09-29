@@ -74,6 +74,56 @@ export default class PasteHandler extends Extension {
               }
           }
             // resize image with the mouse
+            interact('.resize-drag')
+  .resizable({
+    // resize from all edges and corners
+    edges: { left: true, right: true, bottom: true, top: true },
+
+    listeners: {
+      move (event) {
+        var target = event.target
+        var x = (parseFloat(target.getAttribute('data-x')) || 0)
+        var y = (parseFloat(target.getAttribute('data-y')) || 0)
+
+        // update the element's style
+        target.style.width = event.rect.width + 'px'
+        target.style.height = event.rect.height + 'px'
+
+        // translate when resizing from top or left edges
+        x += event.deltaRect.left
+        y += event.deltaRect.top
+
+        target.style.transform = 'translate(' + x + 'px,' + y + 'px)'
+
+        target.setAttribute('data-x', x)
+        target.setAttribute('data-y', y)
+        target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height)
+      }
+    },
+    modifiers: [
+      // keep the edges inside the parent
+      interact.modifiers.restrictEdges({
+        outer: 'parent'
+      }),
+
+      // minimum size
+      interact.modifiers.restrictSize({
+        min: { width: 100, height: 50 }
+      })
+    ],
+
+    inertia: true
+  })
+  .draggable({
+    listeners: { move: window.dragMoveListener },
+    inertia: true,
+    modifiers: [
+      interact.modifiers.restrictRect({
+        restriction: 'parent',
+        endOnly: true
+      })
+    ]
+  })
             //var isDragging = false,
            // $img = $('#myImg');
 
@@ -87,6 +137,26 @@ export default class PasteHandler extends Extension {
             //}).bind('mouseup', function(){
            //  isDragging = false;
            // });
+           function zoomout(){
+            var myImg = document.getElementById("zoom_img");
+            var currWidth = myImg.clientWidth;
+            if(currWidth >= 50){
+                alert("That’s as small as it gets.");
+            } else{
+                myImg.style.width = (currWidth - 100) + "px";
+            }
+        }
+           function zoomin(){
+            var myImg = document.getElementById("zoom_img");
+            var currWidth = myImg.clientWidth;
+            if(currWidth >= 1000){
+                alert("You’re fully zoomed in!");
+            } else{
+                myImg.style.width = (currWidth + 100) + "px";
+            } 
+        }
+
+          
 
             // first check if the clipboard contents can be parsed as a single
             // url, this is mainly for allowing pasted urls to become embeds
@@ -195,3 +265,7 @@ export default class PasteHandler extends Extension {
     ];
   }
 }
+function interact(arg0: string) {
+  throw new Error("Function not implemented.");
+}
+
