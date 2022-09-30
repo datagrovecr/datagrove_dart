@@ -56,7 +56,7 @@ function CreatePoll() {
     }
 
     return (
-    <div className="bg-yellow-100">
+    <div className="border box-border pt-5 w-full flex flex-row flex-wrap justify-center ">
         
         { voteReady && 
             <div className="m-1 p-1">
@@ -98,15 +98,16 @@ function CreatePoll() {
             </button>
         </div>
         
-        <div className="create-poll-form-div ml-5 flex">
+        <div className="create-poll-form-div box-border w-full flex flex-row flex-wrap h-fit justify-start">
             { formVisibility == true && voteReady == false &&
             
-            <div className="visible-poll-div flex items-start justify-center">
-                <div className="build-poll-div basis-1/2">
-                    <div className="mb-10">
-                        <label>Poll Question: 
+            <div className="visible-poll-div p-0 m-0 flex items-start justify-center w-full h-fit">
+                <div className="build-poll-div box-border p-0 m-0 w-screen flex flex-col items-end">
+                    <div className="mb-2 mb-10 flex justify-center items-end">
+                        <label>
                             <input className="ml-2" 
                                 type="text" 
+                                placeholder="Poll Question"
                                 value={ questionInput }
                                 name="pollQuestion" 
                                 onChange={ handleInputChange }
@@ -116,13 +117,14 @@ function CreatePoll() {
 
                         <br></br>
 
-                        <button onClick={ handleSubmitQuestion }>Add Poll Question</button>
+                        <button className="bg-green-300 px-1 py-0 mx-2 rounded" onClick={ handleSubmitQuestion }>Add</button>
                     </div>
 
-                    <div className="my-10 basis-1/2">
-                        <label>Response: 
+                    <div className="my-10 flex justify-center items-end">
+                        <label>
                             <input className="ml-2" 
                                 type="text" 
+                                placeholder="Response Option"
                                 value={ responseInput }
                                 name="pollResponse" 
                                 onChange={ handleUpdateResponse}></input>
@@ -130,23 +132,26 @@ function CreatePoll() {
 
                         <br></br>                
 
-                        <button className="" onClick={ handleSubmitResponse }>
-                            Add Response Option
+                        <button className="bg-green-300 px-1 py-0 mx-2 rounded" onClick={ handleSubmitResponse }>
+                            Add
                         </button>
                     </div>
                 </div>
                     
-                <div className="poll-display-div p-0 m-0 align-top">
+                <div className="poll-display-div box-border p-0 m-0 w-screen align-top">
                     <div className="">
                     { pollQuestionVisibility && 
-                        <h1>{ pollQuestion }</h1>
+                        <div>
+                            <h4 className="italic m-0 p-0 ">Poll Preview</h4>
+                            <h1 className="text-gray-50">{ pollQuestion }</h1>
+                        </div>
                     }
                     </div>
 
                     { responseOptions.map((e, i) => {
                             return (
                                 <div key={ i }>
-                                    <h2 className="py-0">{ i + 1 }: { e }</h2>
+                                    <p className="py-0 text-gray-400 break-all">{ i + 1 }: { e }</p>
                                 </div>
                             )
                         })}
@@ -156,13 +161,19 @@ function CreatePoll() {
             </div>     
             
             }
+
+            <div>
+                { formVisibility == true && voteReady == false &&
+                    <button className="bg-green-300 p-2 my-0 rounded" onClick={ submitPoll }>Finish Poll</button>
+                }
+            </div>
         </div>
 
-        <div>
+        {/* <div>
             { formVisibility == true && voteReady == false &&
-                <button className="bg-green-300 p-2 ml-5 my-0 rounded h-10" onClick={ submitPoll }>Finish Poll</button>
+                <button className="bg-green-300 p-2 ml-5 my-0 rounded" onClick={ submitPoll }>Finish Poll</button>
             }
-        </div>
+        </div> */}
     </div>
     )
 }
