@@ -11,6 +11,7 @@ const colors = {
   grey: "#E8EBED",
   greyMid: "#C5CCD3",
   greyDark: "#DAE1E9",
+  testviolet: "#DE38CF"
 };
 
 export const base = {
@@ -67,12 +68,12 @@ export const base = {
 export const light = {
   ...base,
   background: colors.white,
-  text: colors.almostBlack,
-  code: colors.lightBlack,
+  text: colors.black,
+  code: colors.black,
   cursor: colors.black,
-  divider: colors.greyMid,
+  divider: colors.black,
 
-  toolbarBackground: colors.lightBlack,
+  toolbarBackground: colors.black,
   toolbarHoverBackground: colors.black,
   toolbarInput: colors.white10,
   toolbarItem: colors.white,

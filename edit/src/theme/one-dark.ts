@@ -77,7 +77,7 @@ export const oneDarkTheme = EditorView.theme({
   },
 
   ".cm-gutters": {
-    backgroundColor: violet,
+    backgroundColor: darkBackground,
     color: stone,
     border: "none"
   },

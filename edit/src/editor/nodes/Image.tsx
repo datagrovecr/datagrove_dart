@@ -276,6 +276,7 @@ export default class Image extends Node {
           className="caption"
           tabIndex={-1}
           role="textbox"
+          aria-label="code blocks"
           contentEditable
           suppressContentEditableWarning
           data-caption={this.options.dictionary.imageCaptionPlaceholder}
