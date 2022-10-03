@@ -11,6 +11,14 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 import { EditorView, basicSetup } from "codemirror"
 import { javascript } from "@codemirror/lang-javascript"
 import { oneDark } from "./theme/one-dark"
+import {CodeMirror} from "code-mirror-themes"
+
+var myCodeMirror = CodeMirror(document.body, {
+  mode: 'javascript',
+  lineNumbers: true,
+  theme: 'bespin'
+
+})
 
 let editor = new EditorView({
   extensions: [basicSetup,
