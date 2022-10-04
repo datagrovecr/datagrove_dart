@@ -142,7 +142,7 @@ function CreatePoll() {
                     <div className="">
                     { pollQuestionVisibility && 
                         <div>
-                            <h4 className="italic m-0 p-0 ">Poll Preview</h4>
+                            <h3 className="italic m-0 p-0 text-green-300">Poll Preview</h3>
                             <h1 className="text-gray-50">{ pollQuestion }</h1>
                         </div>
                     }
