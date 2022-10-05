@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 // import DisplayPoll from "../components/DisplayPoll";
 import Counter from "../components/Counter";
+import PollBuilderMenu from "./PollBuilderMenu";
 
 function CreatePoll() {
     const [count, setCount] = useState<number>(0);
@@ -57,6 +58,9 @@ function CreatePoll() {
 
     return (
     <div className="border box-border pt-5 w-full flex flex-row flex-wrap justify-center ">
+        <div>
+            <PollBuilderMenu />
+        </div>
         
         { voteReady && 
             <div className="m-1 p-1">
