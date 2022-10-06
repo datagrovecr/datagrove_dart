@@ -6,6 +6,10 @@ function PollBuilderMenu() {
         questions: [],
     }
 
+    function handleAddResponse() {
+        
+    }
+
     return (
         <div className="flex border-2 border-white-100 rounded-sm m-0 p-0">
             <div className="delete-div pl-2 m0">
@@ -15,8 +19,8 @@ function PollBuilderMenu() {
             </div>
 
             <div className="add-div pl-2 m-0">
-                <button>
-                    <img src="../../../plus.png"  alt="Add poll question icon"/>
+                <button onClick={ handleAddResponse }>
+                    <img src="../../../plus.png"  alt="Add poll question response icon"/>
                 </button>
             </div>
 

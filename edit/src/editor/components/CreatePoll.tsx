@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import DisplayPoll from "../components/DisplayPoll";
 import Counter from "../components/Counter";
 import PollBuilderMenu from "./PollBuilderMenu";
+import PollQuestionBuilderMenu from "./PollQuestionBuilderMenu";
 
 function CreatePoll() {
     const [count, setCount] = useState<number>(0);
@@ -12,7 +13,7 @@ function CreatePoll() {
     const [response, setResponse] = useState<string>("");
     const [responseOptions, setResponseOptions] = useState<string[]>([]);
     const [voteReady, setVoteReady] = useState<boolean>(false);
-    const [questionInput, setQuestionInput] = useState<string>("");
+    const [questionInput, setQuestionInput] = useState<string>("Add Poll Question");
     const [responseInput, setResponseInput] = useState<string>("");
     const [disableQuestion, setDisableQuestion] = useState<boolean>(false);
     const [disableResponse, setDisableResponse] = useState<boolean>(false);
@@ -24,9 +25,16 @@ function CreatePoll() {
     }
 
     function handleInputChange(e) {
-        const name = e.target.value;
-        setPollQuestion(name);
-        setQuestionInput(name);
+        // const name = e.target.value;
+
+        // const name = e.target.innerHTML;
+        
+        // console.log("Name: ", name);
+        // setPollQuestion(name);
+        // setQuestionInput(name);
+        // e.target.innerHTML = "";
+
+        setQuestionInput("");
     }
 
     function handleUpdateResponse(e) {
@@ -45,8 +53,11 @@ function CreatePoll() {
     }
 
     function handleSubmitQuestion(e) {
+        const question = document.getElementById('questionDiv').innerHTML;
+        
         setPollQuestionVisibility(true);
-        setQuestionInput("");
+        setPollQuestion(question);
+        setQuestionInput(" ");
         e.currentTarget.disabled = true;
         setDisableQuestion(true);
     }
@@ -108,8 +119,8 @@ function CreatePoll() {
             <div className="visible-poll-div p-0 m-0 flex items-start justify-center w-full h-fit">
                 <div className="build-poll-div box-border p-0 m-0 w-screen flex flex-col items-end">
                     <div className="mb-2 mb-10 flex justify-center items-end">
-                        <label>
-                            <input className="ml-2" 
+                        {/* <label>
+                            <input className="ml-2 bg-black-800" 
                                 type="text" 
                                 placeholder="Poll Question"
                                 value={ questionInput }
@@ -117,7 +128,11 @@ function CreatePoll() {
                                 onChange={ handleInputChange }
                                 disabled={ disableQuestion }>
                             </input>
-                        </label>
+                        </label> */}
+
+                        <div id="questionDiv" onClick={ handleInputChange } contentEditable>
+                            { questionInput }
+                        </div>
 
                         <br></br>
 
@@ -148,6 +163,7 @@ function CreatePoll() {
                         <div>
                             <h3 className="italic m-0 p-0 text-green-300">Poll Preview</h3>
                             <h1 className="text-gray-50">{ pollQuestion }</h1>
+                            <h1 className="text-gray-50">{ questionInput }</h1>
                         </div>
                     }
                     </div>

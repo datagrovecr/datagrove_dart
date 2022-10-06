@@ -1,6 +1,6 @@
 import React from "react";
 
-function PollQuestionBuidlerMenu() {
+function PollQuestionBuilderMenu() {
     return(
         <div>
             <div className="multiple-choice-div">
@@ -18,3 +18,5 @@ function PollQuestionBuidlerMenu() {
         </div>
     )
 }
+
+export default PollQuestionBuilderMenu;
