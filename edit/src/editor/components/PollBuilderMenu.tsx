@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import PollQuestionBuilderMenu from "./PollQuestionBuilderMenu";
 
 function PollBuilderMenu() {
+    const [showPollOptions, setShowPollOptions] = useState<boolean>(false);
 
     let pollProps = {
         questions: [],
     }
 
     function handleAddResponse() {
-        
+        setShowPollOptions(true);
     }
 
     return (
@@ -22,6 +24,12 @@ function PollBuilderMenu() {
                 <button onClick={ handleAddResponse }>
                     <img src="../../../plus.png"  alt="Add poll question response icon"/>
                 </button>
+
+                {/* <PollQuestionBuilderMenu onClose={ ()=> setShowPollOptions(false) } show={ showPollOptions } /> */}
+
+                { showPollOptions &&
+                    <PollQuestionBuilderMenu onClose={ ()=> setShowPollOptions(false) } />
+                }
             </div>
 
             <div className="move-div px-2 m-0">
