@@ -69,9 +69,9 @@ function CreatePoll() {
 
     return (
     <div className="border box-border pt-5 w-full flex flex-row flex-wrap justify-center ">
-        <div>
+        {/* <div>
             <PollBuilderMenu />
-        </div>
+        </div> */}
         
         { voteReady && 
             <div className="m-1 p-1">
@@ -135,11 +135,12 @@ function CreatePoll() {
                         </div>
 
                         <br></br>
-
+                        { !pollQuestionVisibility && 
                         <button className="bg-green-300 px-1 py-0 mx-2 rounded" onClick={ handleSubmitQuestion }>Add</button>
-                    </div>
+                        }
+                        </div>
 
-                    <div className="my-10 flex justify-center items-end">
+                    {/* <div className="my-10 flex justify-center items-end">
                         <label>
                             <input className="ml-2" 
                                 type="text" 
@@ -154,16 +155,18 @@ function CreatePoll() {
                         <button className="bg-green-300 px-1 py-0 mx-2 rounded" onClick={ handleSubmitResponse }>
                             Add
                         </button>
-                    </div>
+                        
+                    </div> */}
                 </div>
                     
                 <div className="poll-display-div box-border p-0 m-0 w-screen align-top">
                     <div className="">
                     { pollQuestionVisibility && 
                         <div>
-                            <h3 className="italic m-0 p-0 text-green-300">Poll Preview</h3>
+                            <h3 className="italic m-0 p-0 text-green-300">Create Poll</h3>
                             <h1 className="text-gray-50">{ pollQuestion }</h1>
-                            <h1 className="text-gray-50">{ questionInput }</h1>
+                            {/* <h1 className="text-gray-50">{ questionInput }</h1> */}
+                            <PollBuilderMenu />
                         </div>
                     }
                     </div>
