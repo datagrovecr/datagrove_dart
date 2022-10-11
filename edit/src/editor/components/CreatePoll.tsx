@@ -4,7 +4,13 @@ import Counter from "../components/Counter";
 import PollBuilderMenu from "./PollBuilderMenu";
 import PollQuestionBuilderMenu from "./PollQuestionBuilderMenu";
 
-function CreatePoll() {
+function CreatePoll({ pollTypeProps }) {
+    let tester = document.getElementsByClassName('cm-content'); 
+
+    for(let i = 0; i < tester.length; i++) {
+        tester[i].ariaLabel = "Add this label to everything!!!";
+    };
+    
     const [count, setCount] = useState<number>(0);
     const [pollQuestion, setPollQuestion] = useState<string>("");
     const [pollQuestionVisibility, setPollQuestionVisibility] = useState<boolean>(false);
@@ -69,6 +75,9 @@ function CreatePoll() {
 
     return (
     <div className="border box-border pt-5 w-full flex flex-row flex-wrap justify-center ">
+
+        {/* { document.getElementsByClassName('cm-content').style.backgroundColor="red"; } */}
+        
         {/* <div>
             <PollBuilderMenu />
         </div> */}
@@ -79,6 +88,7 @@ function CreatePoll() {
                 
                 <div>
                     <h1 className="m-0 p-0">{ pollProps.question }</h1>
+                    {/* <h2>Test the PQBM props: { pollTypeProps.type }</h2> */}
                 </div>
 
                 <div>
@@ -167,6 +177,8 @@ function CreatePoll() {
                             <h1 className="text-gray-50">{ pollQuestion }</h1>
                             {/* <h1 className="text-gray-50">{ questionInput }</h1> */}
                             <PollBuilderMenu />
+                    
+                            <h1>Test: { pollTypeProps.type }</h1>
                         </div>
                     }
                     </div>
