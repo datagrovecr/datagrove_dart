@@ -30,6 +30,10 @@ function CreatePoll({ pollTypeProps }) {
         votes: 0
     }
 
+    // const pull_data = (data) => {
+    //     console.log("Data: ", data);
+    // }
+
     function handleInputChange(e) {
         // const name = e.target.value;
 
@@ -176,9 +180,19 @@ function CreatePoll({ pollTypeProps }) {
                             <h3 className="italic m-0 p-0 text-green-300">Create Poll</h3>
                             <h1 className="text-gray-50">{ pollQuestion }</h1>
                             {/* <h1 className="text-gray-50">{ questionInput }</h1> */}
-                            <PollBuilderMenu />
-                    
-                            <h1>Test: { pollTypeProps.type }</h1>
+
+
+                            <div contentEditable>
+                                <p>Can you edit this?</p>
+                            </div>
+                            
+                            {/* <PollBuilderMenu /> */}
+
+                            <PollBuilderMenu questionType="mc" />
+                        
+                            {/* <PollQuestionBuilderMenu func={ pull_data }/> */}
+
+
                         </div>
                     }
                     </div>
@@ -210,7 +224,7 @@ function CreatePoll({ pollTypeProps }) {
             }
         </div> */}
     </div>
-    )
+    );
 }
 
 // ReactDOM.render(

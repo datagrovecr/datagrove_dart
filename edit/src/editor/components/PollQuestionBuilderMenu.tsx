@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 
-
-
-function PollQuestionBuilderMenu(props) {
+const PollQuestionBuilderMenu = (props) => {
+    let [showModal, setShowModal] = useState(true);
     let [propType, setPropType] = useState([]);
     let [showMCText, setShowMCText] = useState(false);
     let [showCBText, setShowCBText] = useState(false);
     let [showUDText, setShowUDText] = useState(false);
     
-    let pollTypeProps = {
-        type: "THIS IS A TEST"
-    }
+    // props.func = "THIS IS A TEST"
+
+    let propsForCreatePoll = propType;
 
     function handleSelectMC() {
-        setPropType(prevTypes => [...prevTypes, "mc"]);
+        // setPropType(prevTypes => [...prevTypes, "mc"]);
+        setShowModal(false);
         console.log("propType: ", propType);
     }
 
@@ -53,9 +53,12 @@ function PollQuestionBuilderMenu(props) {
     
     return(
         <div className="modal">
+            { showModal && 
             <div className="modal-content bg-yellow-200 rounded p-2 flex flex-col ">
+
                 <div className="modal-header">
                     <h2 className="modal-title p-0 m-0">Poll Response Options</h2>
+                    {/* <h1>Test props: { props.props.type }</h1> */}
                 </div>
                 
                 <div className="modal-body ml-2">
@@ -82,9 +85,10 @@ function PollQuestionBuilderMenu(props) {
                 </div>
 
                 <div className="modal-footer ">
-                    <button onClick={ props.onClose } className="modal-close-btn bg-red-400 rounded px-2 border border-gray-400">Select</button>
+                    <button onClick={ props.onClose } className="modal-close-btn bg-red-400 rounded px-2 border border-gray-400">Close Modal</button>
                 </div>
             </div>
+            }
         </div>
     )
 }

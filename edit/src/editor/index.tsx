@@ -29,6 +29,7 @@ import headingToSlug from "./lib/headingToSlug";
 import {CodeBlockView} from "./codemirror";
 import CreatePoll from "./components/CreatePoll";
 import DisplayPoll from "./components/DisplayPoll";
+import CreatePollNew from "./components/CreatePollNew";
 
 // styles
 import { StyledEditor } from "./styles/editor";
@@ -840,7 +841,8 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
                   embeds={this.props.embeds}
                 />
 
-                <CreatePoll />
+              <CreatePollNew />
+                {/* <CreatePoll /> */}
                 {/* <DisplayPoll /> */}
               </React.Fragment>
             )}
