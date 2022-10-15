@@ -8,6 +8,9 @@ import getDataTransferFiles from "../lib/getDataTransferFiles";
 import uploadPlaceholderPlugin from "../lib/uploadPlaceholder";
 import insertFiles from "../commands/insertFiles";
 import Node from "./Node";
+import { ImageExtension } from 'remirror/extensions';
+import { Remirror, ThemeProvider, useRemirror } from '@remirror/react';
+
 
 /**
  * Matches following attributes in Markdown-typed image: [, alt, src, class]
@@ -18,6 +21,10 @@ import Node from "./Node";
  * ![Lorem](image.jpg "class") -> [, "Lorem", "image.jpg", "small"]
  */
 const IMAGE_INPUT_REGEX = /!\[(?<alt>[^\]\[]*?)]\((?<filename>[^\]\[]*?)(?=\“|\))\“?(?<layoutclass>[^\]\[\”]+)?\”?\)$/;
+
+
+const extensions = () => [new ImageExtension({ enableResizing: true })];
+
 
 const uploadPlugin = options =>
   new Plugin({
@@ -115,7 +122,9 @@ const downloadImageNode = async node => {
   document.body.removeChild(link);
 };
 
-export default class Image extends Node {
+// export default class Image extends Node {
+  
+class Image extends Node {
   get name() {
     return "image";
   }
@@ -498,3 +507,5 @@ const ImageWrapper = styled.span`
     visibility: visible;
   }
 `;
+
+export default Image;
