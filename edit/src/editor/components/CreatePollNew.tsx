@@ -2,11 +2,22 @@ import React, { useState } from "react";
 import CreatePollResponse from "./CreatePollResponse";
 
 function CreatePollNew() {
-    let [questionType, setQuestionType] = useState("");
-    let [hideResponseTypeOptions, setHideResponseTypeOptions] = useState(false);
+    let [question, setQuestion] = useState<string>("Add Poll Question");
+    let [questionType, setQuestionType] = useState<string>("");
+    let [hideResponseTypeOptions, setHideResponseTypeOptions] = useState<boolean>(false);
 
     let pollProps = {
         type: questionType
+    }
+
+    function handleQuestionClick(e) {
+        setQuestion(" ");
+    }
+
+    function handleEditQuestion(e) {
+        e.preventDefault();
+        alert(e.target.value);
+        setQuestion(e.target.innerHTML);
     }
 
     function handleMC() {
@@ -26,8 +37,8 @@ function CreatePollNew() {
 
     return (
         <div>
-            <div contentEditable>
-                <h1>Add Poll Question</h1>
+            <div id="create-question-div" contentEditable={ true } suppressContentEditableWarning={ true } onChange={ handleEditQuestion }>
+                <h1>{ question }</h1>
             </div>
 
             <div hidden={ hideResponseTypeOptions }>
