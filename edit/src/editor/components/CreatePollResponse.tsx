@@ -1,15 +1,20 @@
 import React, { useState } from "react";
+import PollBuilderMenu from "./PollBuilderMenu";
 
 function CreatePollResponse(props) {
 
     return (
         <div>
-            <h3>Question Type: { props.questionType }</h3>
+            {/* <h3>Question Type: { props.questionType }</h3> */}
 
             { props.questionType === "mc" && 
-            <div contentEditable>
-                Multiple Choice Question Response
-            </div> 
+            <div>
+                <div contentEditable>
+                    Multiple Choice Question Response
+                </div> 
+
+                <PollBuilderMenu />
+            </div>
             }
 
             { props.questionType === "cb" && 

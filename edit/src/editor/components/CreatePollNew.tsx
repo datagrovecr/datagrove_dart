@@ -49,13 +49,13 @@ function CreatePollNew() {
                     <button className="p-2 m-2 bg-green-200 rounded" onClick={ handleUD }>UD</button>
                 </div>
 
-                <div>
+                {/* <div>
                     Type Selected: { pollProps.type }
-                </div>
+                </div> */}
             </div>
 
             <div>
-                Add Response Text
+                {/* Add Response Text */}
 
                 <CreatePollResponse questionType={ questionType }/>
             </div>
