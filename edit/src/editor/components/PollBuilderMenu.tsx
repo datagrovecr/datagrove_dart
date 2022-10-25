@@ -15,10 +15,35 @@ function PollBuilderMenu(props) {
     }
 
     function handleResponseClick(e) {
-        setResponseOptions("");
-        console.log("e.target:", e.target);
-        // setResponseOptions(e.target.innerHTML);
+        // setResponseOptions("");
+        // console.log("e.target:", e.target);
 
+        // setResponseOptions(e.target.innerHTML);
+        // setResponseOptions("This is a test");
+
+        // setResponseOptions(" " || "Whyyyy");
+
+        console.log("in the handleResponse: ", responseOption);
+
+    }
+
+    function handleResponseChange(e) {
+        // setResponseOptions(e.target.innerHTML); 
+
+        // console.log(e)
+
+        // setResponseOptions(e.key)
+        // setResponseOptions(prevResponses => [...prevResponses, e.key])
+
+        // setResponseOptions(prevLetters => [...prevLetters, e.key])
+
+        // setResponseOptions( responseOption + e.key);
+
+        setResponseOptions( responseOption + e.currentTarget.textContent);
+
+        console.log("after adding letters:", responseOption);
+
+        // console.log("updated response: ", responseOption);
     }
 
     return (
@@ -56,8 +81,14 @@ function PollBuilderMenu(props) {
 
             <div className="response-display-div">
                 { showPollOptions &&
-                    <div contentEditable={ true } onClick={ handleResponseClick }>
-                        <h3>{ responseOption }</h3>
+                    <div 
+                    contentEditable={ true } 
+                    data-placeholder={ responseOption }
+                    // onClick={ handleResponseClick } 
+                    onInput={ handleResponseChange } 
+                    suppressContentEditableWarning={ true }
+                    >
+                        <h3 id="resText">{ responseOption }</h3>
                     </div>
                 }
 

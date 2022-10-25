@@ -9,7 +9,7 @@ function CreatePollResponse(props) {
 
             { props.questionType === "mc" && 
             <div>
-                <div contentEditable>
+                <div contentEditable={ true } suppressContentEditableWarning={ true }>
                     Multiple Choice Question Response
                 </div> 
 
@@ -18,13 +18,13 @@ function CreatePollResponse(props) {
             }
 
             { props.questionType === "cb" && 
-            <div contentEditable>
+            <div contentEditable={ true } suppressContentEditableWarning={ true }>
                 Checkbox Question Response
             </div> 
             }
 
             { props.questionType === "ud" && 
-            <div contentEditable>
+            <div contentEditable={ true } suppressContentEditableWarning={ true }>
                 Up/Down Question Response
             </div> 
             }
