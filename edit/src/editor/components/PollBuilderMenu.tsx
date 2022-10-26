@@ -3,6 +3,7 @@ import PollQuestionBuilderMenu from "./PollQuestionBuilderMenu";
 
 function PollBuilderMenu(props) {
     var [showPollOptions, setShowPollOptions] = useState<boolean>(false);
+    // var [responseOption, setResponseOptions] = useState<string[]>(["Add response option"]);
     var [responseOption, setResponseOptions] = useState<string>("Add response option");
 
     let pollProps = {
@@ -15,20 +16,11 @@ function PollBuilderMenu(props) {
     }
 
     function handleResponseClick(e) {
-        // setResponseOptions("");
-        // console.log("e.target:", e.target);
-
-        // setResponseOptions(e.target.innerHTML);
-        // setResponseOptions("This is a test");
-
-        // setResponseOptions(" " || "Whyyyy");
-
-        console.log("in the handleResponse: ", responseOption);
-
+        setResponseOptions("");
     }
 
     function handleResponseChange(e) {
-        // setResponseOptions(e.target.innerHTML); 
+        setResponseOptions(e.target.innerHTML); 
 
         // console.log(e)
 
@@ -37,14 +29,14 @@ function PollBuilderMenu(props) {
 
         // setResponseOptions(prevLetters => [...prevLetters, e.key])
 
-        // setResponseOptions( responseOption + e.key);
-
-        setResponseOptions( responseOption + e.currentTarget.textContent);
+        // setResponseOptions(responseOption => responseOption + e.target.innerHTML)
 
         console.log("after adding letters:", responseOption);
 
         // console.log("updated response: ", responseOption);
     }
+
+    let divRes = document?.getElementById('resDiv')?.getAttribute('data-value');
 
     return (
         <div>
@@ -81,14 +73,17 @@ function PollBuilderMenu(props) {
 
             <div className="response-display-div">
                 { showPollOptions &&
+
                     <div 
+                    id="resDiv"
                     contentEditable={ true } 
                     data-placeholder={ responseOption }
-                    // onClick={ handleResponseClick } 
+                    onClick={ handleResponseClick } 
                     onInput={ handleResponseChange } 
                     suppressContentEditableWarning={ true }
+                    data-value={ responseOption }
                     >
-                        <h3 id="resText">{ responseOption }</h3>
+                        { responseOption }
                     </div>
                 }
 
